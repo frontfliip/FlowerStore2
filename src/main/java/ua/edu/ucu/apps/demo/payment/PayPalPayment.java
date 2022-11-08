@@ -11,17 +11,12 @@ public class PayPalPayment implements Payment {
     private String description;
 
     public  PayPalPayment(){
-        name = "PayPAl";
-        description = "PayPal payment";
+        this.name = "PayPAl";
+        this.description = "PayPal payment";
     }
-
-    public boolean pay(int amount){
-        System.out.println("paid with PayPal");
-        return true;
-    }
-
     @Override
     public boolean pay() {
-        return false;
+        System.out.println("paid with PayPal");
+        return true;
     }
 }

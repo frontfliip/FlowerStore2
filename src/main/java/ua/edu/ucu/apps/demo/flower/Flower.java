@@ -16,7 +16,7 @@ public final class Flower {
     /**
      * flower's sepalLength.
      */
-    private double sepalLength;
+    private Double sepalLength;
     /**
      * flower's color.
      */
@@ -24,7 +24,7 @@ public final class Flower {
     /**
      * flower's price.
      */
-    private double price;
+    private Double price;
     /**
      * flower's type.
      */
@@ -49,8 +49,8 @@ public final class Flower {
      * @param sepallLength sepallLength
      */
     public Flower(final int flowerId, final FlowerColor flowerColor,
-                  final double flowerPrice, final FlowerType flowerType,
-                  final double sepallLength) {
+                  final Double flowerPrice, final FlowerType flowerType,
+                  final Double sepallLength) {
         this.color = flowerColor;
         this.price = flowerPrice;
         this.type = flowerType;

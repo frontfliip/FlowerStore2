@@ -11,7 +11,7 @@ public final class Criteria {
     /**
      * sepalLength.
      */
-    private final double sepalLength;
+    private final Double sepalLength;
 
     /**
      * color.
@@ -21,7 +21,7 @@ public final class Criteria {
     /**
      * maxPrice.
      */
-    private final double maxPrice;
+    private final Double maxPrice;
 
     /**
      * type.
@@ -39,8 +39,8 @@ public final class Criteria {
      */
     public Criteria(final FlowerType flowerType,
                     final FlowerColor flowerColor,
-                    final double flowerMaxPrice,
-                    final double flowerSepalLength) {
+                    final Double flowerMaxPrice,
+                    final Double flowerSepalLength) {
         this.type = flowerType;
         this.color = flowerColor;
         this.maxPrice = flowerMaxPrice;
@@ -51,7 +51,7 @@ public final class Criteria {
      * Getter.
      * @return sepal length
      */
-    public double getSepalLength() {
+    public Double getSepalLength() {
         return sepalLength;
     }
 
@@ -67,7 +67,7 @@ public final class Criteria {
      * Getter.
      * @return max price
      */
-    public double getMaxPrice() {
+    public Double getMaxPrice() {
         return maxPrice;
     }
 

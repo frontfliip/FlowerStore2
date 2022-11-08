@@ -20,23 +20,23 @@ public final class Inventory {
      * Initialize inventory with available flowers.
      */
     public Inventory() {
-        flowers.add(new Flower(1, FlowerColor.WHITE, 9, FlowerType.CHAMOMILE, 7));
-        flowers.add(new Flower(2, FlowerColor.BLUE, 20, FlowerType.CHAMOMILE, 7));
-        flowers.add(new Flower(3, FlowerColor.RED, 20, FlowerType.CHAMOMILE, 7));
+        flowers.add(new Flower(1, FlowerColor.WHITE, 9.0, FlowerType.CHAMOMILE, 7.0));
+        flowers.add(new Flower(2, FlowerColor.BLUE, 20.0, FlowerType.CHAMOMILE, 7.0));
+        flowers.add(new Flower(3, FlowerColor.RED, 20.0, FlowerType.CHAMOMILE, 7.0));
 
-        flowers.add(new Flower(4, FlowerColor.RED, 100, FlowerType.ROSE, 30));
-        flowers.add(new Flower(5, FlowerColor.WHITE, 80, FlowerType.ROSE, 30));
-        flowers.add(new Flower(6, FlowerColor.BLUE, 90, FlowerType.ROSE, 30));
-        flowers.add(new Flower(7, FlowerColor.RED, 60, FlowerType.ROSE, 20));
-        flowers.add(new Flower(8, FlowerColor.WHITE, 50, FlowerType.ROSE, 20));
-        flowers.add(new Flower(9, FlowerColor.BLUE, 40, FlowerType.ROSE, 20));
+        flowers.add(new Flower(4, FlowerColor.RED, 100.0, FlowerType.ROSE, 30.0));
+        flowers.add(new Flower(5, FlowerColor.WHITE, 80.0, FlowerType.ROSE, 30.0));
+        flowers.add(new Flower(6, FlowerColor.BLUE, 90.0, FlowerType.ROSE, 30.0));
+        flowers.add(new Flower(7, FlowerColor.RED, 60.0, FlowerType.ROSE, 20.0));
+        flowers.add(new Flower(8, FlowerColor.WHITE, 50.0, FlowerType.ROSE, 20.0));
+        flowers.add(new Flower(9, FlowerColor.BLUE, 40.0, FlowerType.ROSE, 20.0));
 
-        flowers.add(new Flower(10, FlowerColor.BLUE, 80, FlowerType.TULIP, 20));
-        flowers.add(new Flower(11, FlowerColor.WHITE, 70, FlowerType.TULIP, 20));
-        flowers.add(new Flower(12, FlowerColor.RED, 60, FlowerType.TULIP, 20));
-        flowers.add(new Flower(13, FlowerColor.BLUE, 50, FlowerType.TULIP, 15));
-        flowers.add(new Flower(14, FlowerColor.WHITE, 40, FlowerType.TULIP, 15));
-        flowers.add(new Flower(15, FlowerColor.RED, 30, FlowerType.TULIP, 15));
+        flowers.add(new Flower(10, FlowerColor.BLUE, 80.0, FlowerType.TULIP, 20.0));
+        flowers.add(new Flower(11, FlowerColor.WHITE, 70.0, FlowerType.TULIP, 20.0));
+        flowers.add(new Flower(12, FlowerColor.RED, 60.0, FlowerType.TULIP, 20.0));
+        flowers.add(new Flower(13, FlowerColor.BLUE, 50.0, FlowerType.TULIP, 15.0));
+        flowers.add(new Flower(14, FlowerColor.WHITE, 40.0, FlowerType.TULIP, 15.0));
+        flowers.add(new Flower(15, FlowerColor.RED, 30.0, FlowerType.TULIP, 15.0));
     }
 
     /**
@@ -46,10 +46,10 @@ public final class Inventory {
      */
     public List<Flower> search(final Criteria criteria) {
         return flowers.stream()
-                .filter(f -> f.getColor().equals(criteria.getColor()))
-                .filter(f -> f.getType().equals(criteria.getType()))
-                .filter(f -> f.getPrice() <= criteria.getMaxPrice())
-                .filter(f -> f.getSepalLength() >= criteria.getSepalLength())
+                .filter(f -> criteria.getColor() == null ? true : f.getColor().equals(criteria.getColor()))
+                .filter(f -> criteria.getType() == null ? true : f.getType().equals(criteria.getType()))
+                .filter(f -> criteria.getMaxPrice() == null ? true : f.getPrice() <= criteria.getMaxPrice())
+                .filter(f -> criteria.getSepalLength() == null ? true : f.getSepalLength() >= criteria.getSepalLength())
                 .collect(Collectors.toList());
     }
 

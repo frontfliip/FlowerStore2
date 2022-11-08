@@ -17,10 +17,10 @@ public class FlowerController {
 
     @GetMapping(path = "/search")
     public List<Flower> getFlowers(
-            @RequestParam double sepalLength,
-            @RequestParam FlowerColor color,
-            @RequestParam double maxPrice,
-            @RequestParam FlowerType type) {
+            @RequestParam(required = false) Double sepalLength,
+            @RequestParam(required = false) FlowerColor color,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) FlowerType type) {
         Criteria c = new Criteria(type, color, maxPrice, sepalLength);
         return inventory.search(c);
     }

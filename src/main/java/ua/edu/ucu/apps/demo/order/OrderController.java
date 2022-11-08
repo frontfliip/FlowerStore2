@@ -12,7 +12,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping
+    @PostMapping(path = "/create")
     public int createOrder(@RequestBody Order order) {
         return orderService.createOrder(order);
     }

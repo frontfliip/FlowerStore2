@@ -3,6 +3,8 @@ package ua.edu.ucu.apps.demo.order;
 import lombok.*;
 import ua.edu.ucu.apps.demo.flower.FlowerBucket;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -10,6 +12,6 @@ import ua.edu.ucu.apps.demo.flower.FlowerBucket;
 public class Order {
 
     private int id;
-    FlowerBucket flowerBucket;
+    private List<FlowerBucket> flowerBuckets;
 
 }

@@ -18,9 +18,9 @@ public class OrderService {
 
     public int createOrder(Order order) {
         validateOrder(order);
-        order.getFlowerBucket()
-                .getPacks().forEach(
-                        p -> p.setFlower(inventory.getById(p.getFlower().getId())));
+        order.getFlowerBuckets()
+                .forEach(fb -> fb.getPacks()
+                        .forEach(p -> p.setFlower(inventory.getById(p.getFlower().getId()))));
         return orderRepository.save(order);
     }
     public List<Order> getOrders() {
@@ -28,20 +28,23 @@ public class OrderService {
     }
 
     private void validateOrder(Order order) {
-        order.getFlowerBucket().getPacks()
-                .forEach(p -> {
-                    if (p.getQuantity() <= 0) {
-                        throw new IllegalArgumentException("Quantity must be larger then zero");
-                    }
-                });
+        for (int i = 0; i < order.getFlowerBuckets().size(); i++) {
+            order.getFlowerBuckets().get(i).getPacks()
+                    .forEach(p -> {
+                        if (p.getQuantity() <= 0) {
+                            throw new IllegalArgumentException("Quantity must be larger then zero");
+                        }
+                    });
 
-        order.getFlowerBucket().getPacks().stream()
-                .map(FlowerPack::getFlower)
-                .forEach(f -> {
-                    if (inventory.getById(f.getId()) == null) {
-                        throw new IllegalArgumentException("Wrong flower");
-                    }
-                });
+            order.getFlowerBuckets().get(i).getPacks().stream()
+                    .map(FlowerPack::getFlower)
+                    .forEach(f -> {
+                        if (inventory.getById(f.getId()) == null) {
+                            throw new IllegalArgumentException("Wrong flower");
+                        }
+                    });
+        }
+
 
     }
 }
