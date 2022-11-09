@@ -21,6 +21,8 @@ public class OrderService {
         order.getFlowerBuckets()
                 .forEach(fb -> fb.getPacks()
                         .forEach(p -> p.setFlower(inventory.getById(p.getFlower().getId()))));
+        order.setDelivery();
+        order.setPayment();
         return orderRepository.save(order);
     }
     public List<Order> getOrders() {

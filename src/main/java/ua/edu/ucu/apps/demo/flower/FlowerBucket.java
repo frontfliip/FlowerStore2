@@ -20,5 +20,4 @@ public class FlowerBucket extends Item {
     public double getPrice() {
         return packs.stream().mapToDouble(FlowerPack::calcPrice).sum();
     }
-
 }

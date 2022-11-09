@@ -46,10 +46,10 @@ public final class Inventory {
      */
     public List<Flower> search(final Criteria criteria) {
         return flowers.stream()
-                .filter(f -> criteria.getColor() == null ? true : f.getColor().equals(criteria.getColor()))
-                .filter(f -> criteria.getType() == null ? true : f.getType().equals(criteria.getType()))
-                .filter(f -> criteria.getMaxPrice() == null ? true : f.getPrice() <= criteria.getMaxPrice())
-                .filter(f -> criteria.getSepalLength() == null ? true : f.getSepalLength() >= criteria.getSepalLength())
+                .filter(f -> criteria.getColor() == null || f.getColor().equals(criteria.getColor()))
+                .filter(f -> criteria.getType() == null || f.getType().equals(criteria.getType()))
+                .filter(f -> criteria.getMaxPrice() == null || f.getPrice() <= criteria.getMaxPrice())
+                .filter(f -> criteria.getSepalLength() == null || f.getSepalLength() >= criteria.getSepalLength())
                 .collect(Collectors.toList());
     }
 

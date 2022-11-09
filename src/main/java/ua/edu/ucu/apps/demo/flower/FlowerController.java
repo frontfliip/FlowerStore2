@@ -26,9 +26,7 @@ public class FlowerController {
     }
 
     @GetMapping(path = "/all")
-    public List<Flower> gelAllFlowers(){
-        return inventory.getAllFlowers();
-    }
+    public List<Flower> gelAllFlowers(){return inventory.getAllFlowers();}
 }
 
 

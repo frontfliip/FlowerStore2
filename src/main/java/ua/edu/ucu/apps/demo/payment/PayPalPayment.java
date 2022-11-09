@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
+
 public class PayPalPayment implements Payment {
     private  String name;
 
