@@ -15,6 +15,9 @@ public class FlowerController {
     @Autowired
     private Inventory inventory;
 
+    @Autowired
+    private FlowerRepository flowerRepository;
+
     @GetMapping(path = "/search")
     public List<Flower> getFlowers(
             @RequestParam(required = false) Double sepalLength,
