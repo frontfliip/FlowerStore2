@@ -3,6 +3,7 @@ package ua.edu.ucu.apps.demo.flower;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ua.edu.ucu.apps.demo.item.Item;
 
 import javax.persistence.*;
 
@@ -14,11 +15,12 @@ import javax.persistence.*;
 @Entity
 @Table(name="flower")
 @NoArgsConstructor
-public final class Flower {
+public final class Flower extends Item{
 
     @Id
+    @GeneratedValue
     @Column(name="id")
-    private int id;
+    private Integer id;
 
     /**
      * flower's sepalLength.
@@ -55,6 +57,10 @@ public final class Flower {
                 + ", type=" + type
                 + ", id=" + id
                 + '}';
+    }
+    @Override
+    public double getPrice(){
+        return price;
     }
 
     /**

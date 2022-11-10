@@ -1,10 +1,7 @@
 package ua.edu.ucu.apps.demo.flower;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,20 +13,26 @@ public class FlowerController {
     private Inventory inventory;
 
     @Autowired
-    private FlowerRepository flowerRepository;
+    private FlowerService flowerService;
 
     @GetMapping(path = "/search")
     public List<Flower> getFlowers(
             @RequestParam(required = false) Double sepalLength,
             @RequestParam(required = false) FlowerColor color,
-            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) Double price,
             @RequestParam(required = false) FlowerType type) {
-        Criteria c = new Criteria(type, color, maxPrice, sepalLength);
-        return inventory.search(c);
+//        Criteria c = new Criteria(type, color, maxPrice, sepalLength);
+//        return inventory.search(c);
+        return flowerService.searchFlowers(sepalLength, price, color, type);
     }
 
     @GetMapping(path = "/all")
-    public List<Flower> gelAllFlowers(){return inventory.getAllFlowers();}
+    public List<Flower> gelAllFlowers(){return flowerService.getAllFlowers();}
+
+    @PostMapping(path = "/add")
+    public Flower addFlower(@RequestBody Flower flower){
+        return flowerService.addFlower(flower);
+    }
 }
 
 
