@@ -59,8 +59,13 @@ public final class Flower extends Item{
                 + '}';
     }
     @Override
-    public double getPrice(){
+    public Double getPrice(){
         return price;
+    }
+
+    @Override
+    public String getDescription(){
+        return toString();
     }
 
     /**

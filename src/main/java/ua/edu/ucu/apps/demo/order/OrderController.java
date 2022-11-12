@@ -3,7 +3,10 @@ package ua.edu.ucu.apps.demo.order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.ucu.apps.demo.flower.Flower;
+import ua.edu.ucu.apps.demo.flower.FlowerBucket;
+import ua.edu.ucu.apps.demo.item.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -14,8 +17,12 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping(path = "/create")
-    public int createOrder(@RequestBody Order order) {
-        return orderService.createOrder(order);
+    public int createOrder(@RequestBody OrderRequest order) {
+        Order o = new Order();
+        for(Item item : order.getFlowerBuckets()) {
+            o.addItem(item);
+        }
+        return orderService.createOrder(o);
     }
 
     @GetMapping(path = "/all")

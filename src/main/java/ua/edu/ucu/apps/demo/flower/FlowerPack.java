@@ -16,4 +16,12 @@ public class FlowerPack {
     public double calcPrice() {
         return this.getFlower().getPrice() * this.getQuantity();
     }
+
+    @Override
+    public String toString() {
+        return "FlowerPack{" +
+                "quantity=" + quantity +
+                ", flower=" + flower +
+                '}';
+    }
 }

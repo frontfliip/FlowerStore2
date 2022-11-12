@@ -1,8 +1,11 @@
 package ua.edu.ucu.apps.demo.flower;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.*;
 import ua.edu.ucu.apps.demo.item.Item;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +20,18 @@ public class FlowerBucket extends Item {
     }
 
     @Override
-    public double getPrice() {
+    public Double getPrice() {
         return packs.stream().mapToDouble(FlowerPack::calcPrice).sum();
+    }
+
+    @Override
+    public String toString() {
+        return "FlowerBucket{" +
+                "packs=" + packs +
+                '}';
+    }
+    @Override
+    public String getDescription(){
+        return toString();
     }
 }
