@@ -21,8 +21,6 @@ public class FlowerController {
             @RequestParam(required = false) FlowerColor color,
             @RequestParam(required = false) Double price,
             @RequestParam(required = false) FlowerType type) {
-//        Criteria c = new Criteria(type, color, maxPrice, sepalLength);
-//        return inventory.search(c);
         return flowerService.searchFlowers(sepalLength, price, color, type);
     }
 

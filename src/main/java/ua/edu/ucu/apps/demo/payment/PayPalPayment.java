@@ -16,8 +16,7 @@ public class PayPalPayment implements Payment {
         this.description = "PayPal payment";
     }
     @Override
-    public boolean pay() {
-        System.out.println("paid with PayPal");
-        return true;
+    public String pay() {
+        return "paid with PayPal";
     }
 }

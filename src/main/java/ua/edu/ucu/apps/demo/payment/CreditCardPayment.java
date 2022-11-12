@@ -15,8 +15,7 @@ public class CreditCardPayment implements Payment {
         description = "CreditCard payment";
     }
     @Override
-    public boolean pay(){
-        System.out.println("paid with the credit card");
-        return true;
+    public String pay(){
+        return "paid with the credit card";
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 public class DHLDeliveryStrategy implements Delivery{
 
-    private  String name;
+    private String name;
 
     private String description;
 
@@ -19,8 +19,7 @@ public class DHLDeliveryStrategy implements Delivery{
     }
 
     @Override
-    public boolean deliver(List<Item> items) {
-        System.out.println("The items have been delivered with the DHL");
-        return true;
+    public String deliver(List<Item> items) {
+        return "the items have been delivered with the DHL";
     }
 }

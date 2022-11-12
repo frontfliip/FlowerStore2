@@ -42,6 +42,11 @@ public class OrderService {
         return orderRepository.getOrders();
     }
 
+    public String status(int id){
+        Order order = orderRepository.getById(id);
+        return order.processOrder();
+    }
+
 /*    private void validateOrder(Order order) {
         for (FlowerBucket fb : order.getItems()) {
             for (FlowerPack p : fb.getPacks()) {

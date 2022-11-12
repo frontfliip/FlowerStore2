@@ -24,9 +24,13 @@ public class OrderController {
         }
         return orderService.createOrder(o);
     }
-
     @GetMapping(path = "/all")
     public List<Order> getAllOrders(){
         return orderService.getOrders();
+    }
+
+    @GetMapping(path = "status")
+    public String status(@RequestParam int id){
+        return orderService.status(id);
     }
 }

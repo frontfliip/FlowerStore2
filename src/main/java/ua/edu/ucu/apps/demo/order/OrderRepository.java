@@ -20,4 +20,8 @@ public class OrderRepository {
     public List<Order> getOrders() {
         return new ArrayList<>(orders);
     }
+
+    public Order getById(int id){
+        return orders.get(id);
+    }
 }

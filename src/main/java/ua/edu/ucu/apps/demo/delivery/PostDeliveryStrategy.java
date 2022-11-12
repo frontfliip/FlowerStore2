@@ -19,8 +19,7 @@ public class PostDeliveryStrategy implements Delivery{
     }
 
     @Override
-    public boolean deliver(List<Item> items) {
-        System.out.println("The items have been delivered with the post");
-        return true;
+    public String deliver(List<Item> items) {
+        return "the items have been delivered with the post";
     }
 }

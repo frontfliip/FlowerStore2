@@ -17,7 +17,7 @@ public class Order {
 
     private int id;
     private Payment payment;
-    private Delivery  delivery;
+    private Delivery delivery;
     private List<Item> items = new ArrayList<>();
 
     public double getPrice() {
@@ -30,4 +30,12 @@ public class Order {
     public void addItem(Item item){
         items.add(item);
     }
+    public void removeItem(Item item){
+        items.remove(item);
+    }
+    public String processOrder(){
+        String toReturn = "Order processed, " + payment.pay() + ", " +  delivery.deliver(items);
+        return toReturn;
+    }
+
 }
