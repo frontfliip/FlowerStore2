@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ua.edu.ucu.apps.demo.flower.Flower;
 import ua.edu.ucu.apps.demo.flower.FlowerBucket;
 import ua.edu.ucu.apps.demo.item.Item;
+import ua.edu.ucu.apps.demo.user.UserInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +18,8 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping(path = "/create")
-    public int createOrder(@RequestBody OrderRequest order) {
-        Order o = new Order();
-        for(Item item : order.getFlowerBuckets()) {
-            o.addItem(item);
-        }
-        return orderService.createOrder(o);
+    public int createOrder(@RequestBody OrderRequest orderRequest) {
+        return orderService.createOrder(orderRequest);
     }
     @GetMapping(path = "/all")
     public List<Order> getAllOrders(){

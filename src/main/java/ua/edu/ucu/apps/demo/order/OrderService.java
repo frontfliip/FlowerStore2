@@ -10,6 +10,7 @@ import ua.edu.ucu.apps.demo.item.ItemDecorator;
 import ua.edu.ucu.apps.demo.item.PaperDecorator;
 import ua.edu.ucu.apps.demo.item.RibbonDecorator;
 import ua.edu.ucu.apps.demo.payment.CreditCardPayment;
+import ua.edu.ucu.apps.demo.user.*;
 
 import java.util.List;
 
@@ -18,11 +19,27 @@ public class OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
-
     @Autowired
     private FlowerRepository flowerRepository;
 
-    public int createOrder(Order order) {
+    @Autowired
+    private UserRepository userRepository;
+
+    public int createOrder(OrderRequest orderRequest) {
+        Order order = new Order();
+        for(Item item : orderRequest.getFlowerBuckets()) {
+            order.addItem(item);
+        }
+
+        Receiver receiver = new Receiver();
+        receiver.setUser(userRepository.findById(orderRequest.getReceiverId()).get());
+
+        Sender sender = new Sender();
+        sender.setUser(userRepository.findById(orderRequest.getSenderId()).get());
+
+        order.getUsers().add(receiver);
+        order.getUsers().add(sender);
+
         for (int i=0; i < order.getItems().size(); i++){
             if (order.getItems().get(i) instanceof FlowerBucket fb) {
                 for (FlowerPack p : fb.getPacks()) {
@@ -46,21 +63,4 @@ public class OrderService {
         Order order = orderRepository.getById(id);
         return order.processOrder();
     }
-
-/*    private void validateOrder(Order order) {
-        for (FlowerBucket fb : order.getItems()) {
-            for (FlowerPack p : fb.getPacks()) {
-                if (p.getQuantity() <= 0) {
-                    throw new IllegalArgumentException("Quantity must be larger then zero");
-                }
-            }
-
-            for (FlowerPack flowerPack : fb.getPacks()) {
-                Flower f = flowerPack.getFlower();
-                if (!flowerRepository.exists(Example.of(f))) {
-                    throw new IllegalArgumentException("Wrong flower");
-                }
-            }
-        }
-    }*/
 }

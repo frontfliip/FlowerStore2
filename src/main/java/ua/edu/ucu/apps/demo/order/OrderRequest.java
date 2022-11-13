@@ -7,6 +7,7 @@ import ua.edu.ucu.apps.demo.delivery.Delivery;
 import ua.edu.ucu.apps.demo.flower.FlowerBucket;
 import ua.edu.ucu.apps.demo.item.Item;
 import ua.edu.ucu.apps.demo.payment.Payment;
+import ua.edu.ucu.apps.demo.user.User;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderRequest {
     private List<FlowerBucket> flowerBuckets;
+    private int receiverId;
+    private int senderId;
 }

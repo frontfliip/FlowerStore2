@@ -18,7 +18,8 @@ import javax.persistence.*;
 public final class Flower extends Item{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flower_jpa_sequence_generator")
+    @SequenceGenerator(name = "flower_jpa_sequence_generator", sequenceName = "flower_id_sequence")
     @Column(name="id")
     private Integer id;
 
