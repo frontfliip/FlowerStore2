@@ -20,7 +20,6 @@ public class Order {
     private Payment payment;
     private Delivery delivery;
     private List<Item> items = new ArrayList<>();
-
     private List<UserInterface> users = new ArrayList<>();
 
     public double getPrice() {
