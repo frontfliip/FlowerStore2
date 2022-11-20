@@ -26,7 +26,7 @@ public class OrderController {
         return orderService.getOrders();
     }
 
-    @GetMapping(path = "status")
+    @GetMapping(path = "/status")
     public String status(@RequestParam int id){
         return orderService.status(id);
     }

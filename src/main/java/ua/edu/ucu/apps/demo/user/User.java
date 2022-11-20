@@ -13,7 +13,6 @@ import java.time.Period;
 @NoArgsConstructor
 @Setter
 @Getter
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_jpa_sequence_generator")
